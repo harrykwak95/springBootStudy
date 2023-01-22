@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.example.demo.constant.ItemSellStatus;
+import com.example.demo.dto.ItemFormDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 
-public class Item {
+public class Item  extends BaseEntity{
 
     @Id
     @Column(name="item_id")
@@ -41,5 +42,13 @@ public class Item {
     private LocalDateTime regTime;
 
     private LocalDateTime updateTime;
+
+    public void updateItem(ItemFormDto itemFormDto) {
+        this.itemNm = itemFormDto.getItemNm();
+        this.price = itemFormDto.getPrice();
+        this.stockNumber = itemFormDto.getStockNumber();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
 
 }
